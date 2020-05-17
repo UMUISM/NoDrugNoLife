@@ -1,0 +1,66 @@
+C51 COMPILER V9.60.0.0   MAIN                                                              05/17/2020 15:49:17 PAGE 1   
+
+
+C51 COMPILER V9.60.0.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\tools\keilv5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings
+                    -\main.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <REG51.h>
+   2          #include "Delay.h"
+   3          
+   4          sbit LEDR = P3^1;
+   5          sbit LEDG = P3^2;
+   6          sbit LEDB = P3^3;
+   7          sbit SA = P3^5;
+   8          sbit SB = P3^4;
+   9          
+  10          void main (void) {
+  11   1          int LED = 0;
+  12   1          while(1) {
+  13   2              SA = 1;
+  14   2              SB = 1;
+  15   2              if(SA == 0) {
+  16   3                  DELAY_MS(50);
+  17   3                  if(SA == 0) {
+  18   4                      LEDR = 1;
+  19   4                      LED += 1;
+  20   4                  }
+  21   3                  if(LED == 1) {
+  22   4                      LEDG = 1;
+  23   4                      LEDB = 0;
+  24   4                      DELAY_MS(500);
+  25   4                  } else if(LED == 2) {
+  26   4                      LEDB = 1;
+  27   4                      LEDG = 0;
+  28   4                      DELAY_MS(500);
+  29   4                  }
+  30   3              }
+  31   2              if(SB == 0) {
+  32   3                  if(SB == 0) {
+  33   4                      LED = 0;
+  34   4                  }
+  35   3              }
+  36   2              if(LED == 0) {
+  37   3                  LEDR = 0;
+  38   3                  LEDG = 1;
+  39   3                  LEDB = 1;
+  40   3              }
+  41   2          }
+  42   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     90    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       2
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
